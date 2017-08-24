@@ -6,12 +6,12 @@ var router = express.Router();
 var model = require ("../models");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
+router.get("https://fathomless-hamlet-25667.herokuapp.com/", function(req, res) {
   res.redirect('/burgers');
 });
 
 
-router.get('/burgers', function(req, res){
+router.get('https://fathomless-hamlet-25667.herokuapp.com/burgers', function(req, res){
     model.Burger.findAll({}).then(function(data){
     res.render('index', {burger_data: data});
   });
@@ -19,7 +19,7 @@ router.get('/burgers', function(req, res){
 
 
 
-router.post("/burgers/create", function(req, res) {
+router.post("https://fathomless-hamlet-25667.herokuapp.com/burgers/create", function(req, res) {
   console.log(req.burger_name);
   model.Burger.create({
     name: req.body.burger_name,
@@ -29,7 +29,7 @@ router.post("/burgers/create", function(req, res) {
     }); 
 });
 
-router.put('/burgers/update', function( req, res){
+router.put('https://fathomless-hamlet-25667.herokuapp.com/burgers/update', function( req, res){
   model.Burger.update({
     devoured: true
   },{
@@ -37,7 +37,7 @@ router.put('/burgers/update', function( req, res){
       id: req.body.burger_id
     }
   }).then(function(data){
-    res.redirect('/');
+    res.redirect('https://fathomless-hamlet-25667.herokuapp.com/');
     console.log(data);
   });
 });
