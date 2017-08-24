@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var path = require("path");
 
-var PORT = 3306;
+var PORT = process.env.PORT || 3306;
 
 var app = express();
 
@@ -29,11 +29,11 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 var routes = require("./controllers/burgers-controller.js");
 
-app.use("https://fathomless-hamlet-25667.herokuapp.com/", routes);
+app.use("/", routes);
 
-app.use("https://fathomless-hamlet-25667.herokuapp.com/update", routes);
+app.use("/update", routes);
 
-app.use("https://fathomless-hamlet-25667.herokuapp.com/create", routes);
+app.use("/create", routes);
 
 
 db.sequelize.sync({}).then(function() {
